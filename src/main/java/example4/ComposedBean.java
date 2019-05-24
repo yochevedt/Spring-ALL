@@ -3,6 +3,8 @@ package example4;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -10,7 +12,6 @@ import org.springframework.stereotype.Component;
 @Scope("prototype")
 public class ComposedBean {
 	//@Autowired
-	//@Qualifier("proto6")
 	private PrototypeBean proto;
 	//@Autowired
 	private SingletonBean single;
