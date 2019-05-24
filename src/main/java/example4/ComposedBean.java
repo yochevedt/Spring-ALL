@@ -1,5 +1,8 @@
 package example4;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -12,6 +15,9 @@ public class ComposedBean {
 	//@Autowired
 	private SingletonBean single;
 	
+	public ComposedBean() {
+		
+	}
 	public ComposedBean(PrototypeBean proto, SingletonBean single){
 		this.proto=proto;
 		this.single=single;
@@ -27,5 +33,14 @@ public class ComposedBean {
 	
 	public void show(){
 		System.out.println("@@@");
+	}
+	
+	@PreDestroy
+	public void destroy(){
+		System.out.println("ComposedBean is going down...");
+	}
+	@PostConstruct
+	public void init() {
+		System.out.println("ComposedBean Inside init method " );
 	}
 }
