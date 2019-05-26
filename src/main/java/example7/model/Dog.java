@@ -1,4 +1,4 @@
-package example7;
+package example7.model;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanNameAware;

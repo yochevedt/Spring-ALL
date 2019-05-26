@@ -3,8 +3,12 @@ package example7;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
+
+import example7.model.Dog;
 
 @Configuration
+@EnableAspectJAutoProxy
 @ComponentScan({ "example7" })
 public class Application7 {
 
