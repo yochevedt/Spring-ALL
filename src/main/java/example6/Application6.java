@@ -6,10 +6,10 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ComponentScan({ "example6" })
-public class Application {
+public class Application6 {
 
 	public static void main(String[] args) {
-		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(Application.class);
+		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(Application6.class);
 
 		for (int i = 0; i < 2; i++) {
 			System.out.format("************* %d ************\n", i);

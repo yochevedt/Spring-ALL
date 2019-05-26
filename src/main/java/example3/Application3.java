@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Scope;
 
 @Configuration
 @ComponentScan({ "example3" })
-public class Application {
+public class Application3 {
 	
 	@Bean
 	@Primary
@@ -27,7 +27,7 @@ public class Application {
 
 
 	public static void main(String[] args) {
-		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(Application.class);
+		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(Application3.class);
 		Person person1 = ctx.getBean("thePerson1", Person.class);
 		person1.printMe();
 		Person person2 = ctx.getBean("thePerson2", Person.class);

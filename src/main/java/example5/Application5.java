@@ -6,10 +6,10 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @ComponentScan({"example5"})
-public class Application {
+public class Application5 {
 
 	public static void main(String[] args) {
-		AnnotationConfigApplicationContext ctx=new AnnotationConfigApplicationContext(Application.class);
+		AnnotationConfigApplicationContext ctx=new AnnotationConfigApplicationContext(Application5.class);
 		
 		
 		LombokBeanA lombokA=ctx.getBean(LombokBeanA.class);
