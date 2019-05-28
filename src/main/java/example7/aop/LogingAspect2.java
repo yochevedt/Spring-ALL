@@ -7,21 +7,26 @@ import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
-@Component
-@Aspect
-public class LogingAspect {
+//@Component
+//@Aspect
+public class LogingAspect2 {
 	
 	
+	@Pointcut("execution( * example7.model.*.*(..))")
+	public void modelPointCut() {
+		
+	}
 	
-	@Before("execution( * example7.model.*.*(..))")
+	@Before("modelPointCut()")
 	public void logMethodBefore(JoinPoint jp) {
 		Signature sign=jp.getSignature();
 		System.err.println("AspectJ - before - "+sign.getName()+" was invoked on "+new Timestamp(System.currentTimeMillis()));
 
 	}
-	@After("execution( * example7.model.*.*(..))")
+	@After("modelPointCut()")
 	public void logMethodAfter(JoinPoint jp) {
 		Signature sign=jp.getSignature();
 		System.err.println("AspectJ - after - "+sign.getName()+" was invoked on "+new Timestamp(System.currentTimeMillis()));
