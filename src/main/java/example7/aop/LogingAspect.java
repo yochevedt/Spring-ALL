@@ -9,8 +9,8 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
 
-@Component
-@Aspect
+//@Component
+//@Aspect
 public class LogingAspect {
 	
 	
@@ -19,6 +19,7 @@ public class LogingAspect {
 	public void logMethodBefore(JoinPoint jp) {
 		Signature sign=jp.getSignature();
 		System.err.println("AspectJ - before - "+sign.getName()+" was invoked on "+new Timestamp(System.currentTimeMillis()));
+		
 
 	}
 	@After("execution( * example7.model.*.*(..))")
@@ -27,7 +28,6 @@ public class LogingAspect {
 		System.err.println("AspectJ - after - "+sign.getName()+" was invoked on "+new Timestamp(System.currentTimeMillis()));
 
 	}
-	
 	
 	
 
