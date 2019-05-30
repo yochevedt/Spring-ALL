@@ -26,6 +26,8 @@ public class Application7 {
 			System.out.println(dog.bark1());
 			System.out.println(dog.bark2());
 			System.out.println(dog.bark3());
+			
+			dog.setName("new name");
 		}
 		ctx.close();
 	}

@@ -9,6 +9,7 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+import example7.annotation.ArgExampleAnnotation;
 import lombok.Data;
 
 @Data
@@ -25,9 +26,15 @@ public class Dog implements ApplicationContextAware, BeanNameAware  {
 	private String beanName;
 	
 	
-	public void setBeanName(String name) {
+	
+	
+	public void setBeanName( String name) {
 		this.beanName = name;
 		
+	}
+	@ArgExampleAnnotation
+	public void setName(String name) {
+		this.name = name;
 	}
 	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
 		this.applicationContext = applicationContext;

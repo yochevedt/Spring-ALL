@@ -58,5 +58,17 @@ public class LogingAspect2 {
 		else
 			return null;
 	}
+	
+	@Before("@annotation(example7.annotation.ArgExampleAnnotation)")
+	public void beforeAnntation(JoinPoint jp) {
+		Signature sign = jp.getSignature();
+		System.err.println("AspectJ -@annotation -  before - " + sign.getName() + " was invoked with  "+ jp.getArgs()[0]);
+	}
+	
+	@Before("@args(example7.annotation.ArgExampleAnnotation)")
+	public void beforeArgsAnntation(JoinPoint jp) {
+		Signature sign = jp.getSignature();
+		System.err.println("AspectJ -@args -  before - " + sign.getName() + " was invoked with  "+ jp.getArgs()[0]);
+	}
 
 }
