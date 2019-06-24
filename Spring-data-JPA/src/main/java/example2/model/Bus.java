@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Hall implements Serializable {
+public class Bus implements Serializable {
 	/**
 	 * Require in order to prevent the IDE warning
 	 */
@@ -35,6 +35,6 @@ public class Hall implements Serializable {
 	@Column(nullable = false)
 	private String name;
 
-	@OneToMany(fetch= FetchType.EAGER)
+	@OneToMany(fetch= FetchType.EAGER, mappedBy="bus")
 	private List<Seat> seats;
 }
