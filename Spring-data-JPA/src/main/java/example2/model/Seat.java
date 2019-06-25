@@ -15,6 +15,7 @@ import javax.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Data
@@ -38,9 +39,11 @@ public class Seat implements Serializable {
 	@Column(nullable = false)
 	int number;
 	
+	@ToString.Exclude
 	@ManyToOne
 	Bus bus;
 	
+	@ToString.Exclude
 	@OneToMany(fetch= FetchType.EAGER, mappedBy="seat")
 	private List<Ticket> tickets;
 }
