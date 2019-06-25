@@ -9,20 +9,22 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
-import example2.model.Bus;
 import example2.model.Seat;
 
 @Repository
 public class SeatDaoImp implements SeatDAO {
-	
+
 	@PersistenceContext
 	private EntityManager entityManager;
-	
+
 	@Override
 	@Transactional
 	public void saveSeat(Seat seat) {
-		entityManager.persist(seat);
-		
+		if (seat.getId() == null) {
+			entityManager.persist(seat);
+		} else {
+			entityManager.merge(seat);
+		}
 	}
 
 	@Override
@@ -36,7 +38,7 @@ public class SeatDaoImp implements SeatDAO {
 		String HSQL = "SELECT seat FROM Seat seat";
 		Query query = entityManager.createQuery(HSQL);
 		List<Seat> seats = (List<Seat>) query.getResultList();
-		//System.out.println(bussess);
+		// System.out.println(bussess);
 		return seats;
 	}
 

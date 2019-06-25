@@ -40,6 +40,17 @@ public class ApplicationJPA3 {
 		
 		List<Bus> all = busDao.getAll();
 		System.out.println("Records: \n" + all);
+		
+		bus = busDao.getBusById(bus.getId());
+		
+		bus.getSeats().get(0).setRawLetter("Z");
+		busDao.saveBus(bus);
+		
+		bus.setName(bus.getName() + " change it");
+		busDao.saveBus(bus);
+		
+		seatDao.saveSeat(bus.getSeats().get(0));
+		
 		applicationContext.close();
 		
 	}

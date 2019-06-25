@@ -24,8 +24,11 @@ public class BusDaoImp implements BusDao {
 	@Override
 	@Transactional
 	public void saveBus(Bus bus) {
-
-		entityManager.persist(bus);
+		if (bus.getId() == null) {
+			entityManager.persist(bus);
+		} else {
+			entityManager.merge(bus);
+		}
 	}
 
 	/*
