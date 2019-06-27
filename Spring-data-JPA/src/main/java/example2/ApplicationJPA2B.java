@@ -15,10 +15,10 @@ import example2.model.Seat;
 
 @SpringBootApplication
 @ComponentScan({ "example2" })
-public class ApplicationJPA3 {
+public class ApplicationJPA2B {
 
 	public static void main(String[] args) {
-		ConfigurableApplicationContext applicationContext = SpringApplication.run(ApplicationJPA3.class, args);
+		ConfigurableApplicationContext applicationContext = SpringApplication.run(ApplicationJPA2B.class, args);
 		BusDao busDao = applicationContext.getBean(BusDao.class);
 		SeatDAO seatDao = applicationContext.getBean(SeatDAO.class);
 		

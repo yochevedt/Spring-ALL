@@ -1,17 +1,15 @@
-package example2.model;
+package example3.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
@@ -23,9 +21,9 @@ import lombok.ToString;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Bus implements Serializable {
+public class Passanger implements Serializable{
 	/**
-	 * Require in order to prevent the IDE warning
+	 * Require in order to prevent the IDE warning 
 	 */
 	private static final long serialVersionUID = 1L;
 
@@ -36,13 +34,17 @@ public class Bus implements Serializable {
 
 	@Basic(optional = false)
 	@Column(nullable = false)
-	private String name;
+	private String firstName;
 
-	@ToString.Exclude
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "bus",cascade=CascadeType.ALL)
-	private List<Seat> seats = new ArrayList<>();
+	@Basic(optional = false)
+	@Column(nullable = false)
+	private String lastName;
 
+	@Basic(optional = false)
+	@Column(nullable = false)
+	private int seatNumber;
+	
 	@ToString.Exclude
-	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "busses")
-	private List<BussDriver> bussDrivers = new ArrayList<>();;
+	@OneToMany(fetch= FetchType.LAZY, mappedBy="passanger")
+	private List<Ticket> tickets=new ArrayList<>();;
 }

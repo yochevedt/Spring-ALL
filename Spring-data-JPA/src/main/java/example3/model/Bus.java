@@ -1,11 +1,10 @@
-package example2.model;
+package example3.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -39,7 +38,7 @@ public class Bus implements Serializable {
 	private String name;
 
 	@ToString.Exclude
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "bus",cascade=CascadeType.ALL)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "bus")
 	private List<Seat> seats = new ArrayList<>();
 
 	@ToString.Exclude
