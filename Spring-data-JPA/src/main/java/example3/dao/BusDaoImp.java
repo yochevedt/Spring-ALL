@@ -1,6 +1,7 @@
 package example3.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -10,6 +11,7 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 import example3.model.Bus;
+import example3.model.BussDriver;
 
 @Repository
 public class BusDaoImp implements BusDao {
@@ -37,10 +39,11 @@ public class BusDaoImp implements BusDao {
 	 * @see example2.dao.BusDao#getHallById(int)
 	 */
 	@Override
-	//@Transactional
+	@Transactional
 	public Bus getBusById(long busId) {
 		Bus bus = (Bus) entityManager.find(Bus.class, busId);
-		//System.out.println(bus);
+		Map<Long, BussDriver> bussDrivers = bus.getBussDrivers();
+		System.out.println(bussDrivers);
 		return bus;
 	}
 

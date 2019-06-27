@@ -1,13 +1,16 @@
 package example3;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
+import example2.model.BussDriver;
 import example3.dao.BusDao;
 import example3.dao.SeatDAO;
 import example3.model.Bus;
@@ -62,6 +65,8 @@ public class ApplicationJPA3 {
 
 		bus.setName(bus.getName() + " change it");
 		bus.setSeats(seatByBusId);
+		
+		
 		busDao.saveBus(bus);
 		
 		seatDao.saveSeat(bus.getSeats().get(0));

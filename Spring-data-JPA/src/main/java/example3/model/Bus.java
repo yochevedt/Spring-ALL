@@ -2,15 +2,19 @@ package example3.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.MapKey;
 import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
@@ -42,6 +46,7 @@ public class Bus implements Serializable {
 	private List<Seat> seats = new ArrayList<>();
 
 	@ToString.Exclude
-	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "busses")
-	private List<BussDriver> bussDrivers = new ArrayList<>();;
+	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "busses", cascade=CascadeType.ALL)
+	@MapKey(name="id")
+	private Map<Long,BussDriver> bussDrivers = new HashMap<>();;
 }

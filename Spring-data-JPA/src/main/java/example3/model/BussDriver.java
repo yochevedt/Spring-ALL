@@ -1,7 +1,8 @@
 package example3.model;
 
 import java.io.Serializable;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -9,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.MapKey;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -40,6 +42,7 @@ public class BussDriver implements Serializable{
 	
 	@ToString.Exclude
 	@ManyToMany
-	private List<Bus> busses;
+	@MapKey(name="id")
+	private Map<Long,Bus> busses = new HashMap<>();
 	
 }
