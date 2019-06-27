@@ -10,11 +10,13 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Data
@@ -35,6 +37,11 @@ public class Bus implements Serializable {
 	@Column(nullable = false)
 	private String name;
 
-	@OneToMany(fetch= FetchType.EAGER, mappedBy="bus")
-	private List<Seat> seats;
+	@ToString.Exclude
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "bus")
+	private List<Seat> seats = new ArrayList<>();
+
+	@ToString.Exclude
+	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "busses")
+	private List<BussDriver> bussDrivers = new ArrayList<>();;
 }

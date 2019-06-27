@@ -11,5 +11,7 @@ public interface SeatDAO {
 	Seat getSeatById(long seatId);
 
 	List<Seat> getAll();
+	
+	List<Seat> getSeatByBusId(Long busId) ;
 
 }

@@ -21,9 +21,12 @@ public class ApplicationJPA3 {
 		ConfigurableApplicationContext applicationContext = SpringApplication.run(ApplicationJPA3.class, args);
 		BusDao busDao = applicationContext.getBean(BusDao.class);
 		SeatDAO seatDao = applicationContext.getBean(SeatDAO.class);
+		
+		System.out.println("**************** Saving Bus");
 		Bus bus = new Bus();
 		bus.setName("My bus");
 		busDao.saveBus(bus);
+		System.out.println("**************** adding seats");
 		
 		List<String> rowLetters = Arrays.asList("A","B","C");
 		int numberOfSeatForEachRow = 4;
@@ -36,17 +39,29 @@ public class ApplicationJPA3 {
 				seatDao.saveSeat(seat);
 			}
 		}
-		
+		System.out.println("**************** get all busses");
+
 		
 		List<Bus> all = busDao.getAll();
 		System.out.println("Records: \n" + all);
-		
+		System.out.println("**************** get Bus by id");
+
 		bus = busDao.getBusById(bus.getId());
 		
+		System.out.println("**************** updateing the seats");
+
 		bus.getSeats().get(0).setRawLetter("Z");
 		busDao.saveBus(bus);
 		
+
+//		List<Seat> seatByBusId = seatDao.getSeatByBusId(bus.getId());
+//		seatByBusId.get(0).setRawLetter("Z");
+//		seatDao.saveSeat(seatByBusId.get(0));
+//		
+		System.out.println("**************** updating  Bus");
+
 		bus.setName(bus.getName() + " change it");
+		//bus.setSeats(seatByBusId);
 		busDao.saveBus(bus);
 		
 		seatDao.saveSeat(bus.getSeats().get(0));
